@@ -30,6 +30,7 @@ public class PlayerTest {
     @Test
     public void playerHandIncreasesWhenCardDrawn() {
         player1.drawCard(deck);
-        assertEquals(1, player1.countHand());
+        player1.drawCard(deck);
+        assertEquals(2, player1.countHand());
     }
 }
