@@ -34,6 +34,11 @@ public class GameTest {
         assertEquals(1, game.countPlayers());
     }
 
+    @Test
+    public void canGetDealer() {
+        assertEquals(dealer, game.getDealer());
+    }
+
 
 
 
