@@ -13,4 +13,12 @@ public class Dealer {
         return this.name;
     }
 
+    public int countHand() {
+        return this.hand.size();
+    }
+
+    public void drawCard(Deck deck) {
+        this.hand.add(deck.dealCard());
+    }
+
 }
