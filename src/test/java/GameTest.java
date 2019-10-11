@@ -4,12 +4,17 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 public class GameTest {
-    private String name;
     private Game game;
+    private Player player;
+    private Dealer dealer;
 
     @Before
     public void before() {
         game = new Game("Blackjack");
+        player = new Player("Joe");
+        dealer = new Dealer("Samuel");
+
+        game.addDealer(dealer);
     }
 
     @Test
@@ -18,12 +23,16 @@ public class GameTest {
     }
 
     @Test
-    public void canGetPlayers() {
-        game.addPlayer(player);
-        game.addPlayer(dealer);
+    public void playersArrayStartsEmpty() {
+        game.countPlayers();
         assertEquals(0, game.countPlayers());
     }
 
+    @Test
+    public void canAddPlayersToPlayerArray() {
+        game.addPlayer(player);
+        assertEquals(1, game.countPlayers());
+    }
 
 
 
