@@ -20,6 +20,14 @@ public class Player {
     public void drawCard(Deck deck) {
         this.hand.add(deck.dealCard());
     }
+
+    public int handTotal() {
+        int handTotal = 0;
+        for (Card card : this.hand) {
+            handTotal += card.getValue();
+        }
+        return handTotal;
+    }
 }
 
 

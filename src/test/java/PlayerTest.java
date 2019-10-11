@@ -1,7 +1,7 @@
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 public class PlayerTest {
     private Player player1;
@@ -15,6 +15,8 @@ public class PlayerTest {
         deck = new Deck("Decklan");
 
         deck.createCardDeck();
+        player1.drawCard(deck);
+        player1.drawCard(deck);
     }
 
     @Test
@@ -23,20 +25,13 @@ public class PlayerTest {
     }
 
     @Test
-    public void playerHandStartsAtZero() {
-        assertEquals(0, player1.countHand());
-    }
-
-    @Test
     public void playerHandIncreasesWhenCardDrawn() {
-        player1.drawCard(deck);
-        player1.drawCard(deck);
         assertEquals(2, player1.countHand());
     }
 
     @Test
     public void canGetPlayerHandTotal() {
-
+        assertNotEquals(0, player1.handTotal());
     }
 
 
