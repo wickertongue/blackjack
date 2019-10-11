@@ -33,4 +33,11 @@ public class PlayerTest {
         player1.drawCard(deck);
         assertEquals(2, player1.countHand());
     }
+
+    @Test
+    public void canGetPlayerHandTotal() {
+
+    }
+
+
 }
