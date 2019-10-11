@@ -5,16 +5,20 @@ import static org.junit.Assert.assertEquals;
 
 public class GameTest {
     private Game game;
-    private Player player;
+    private Player player1;
+    private Player player2;
     private Dealer dealer;
 
     @Before
     public void before() {
         game = new Game("Blackjack");
-        player = new Player("Joe");
+        player1 = new Player("Joe");
+        player2 = new Player("Sandy");
         dealer = new Dealer("Samuel");
 
         game.addDealer(dealer);
+        game.addPlayer(player1);
+        game.addPlayer(player2);
     }
 
     @Test
@@ -23,23 +27,14 @@ public class GameTest {
     }
 
     @Test
-    public void playersArrayStartsEmpty() {
-        game.countPlayers();
-        assertEquals(0, game.countPlayers());
-    }
-
-    @Test
     public void canAddPlayersToPlayerArray() {
-        game.addPlayer(player);
-        assertEquals(1, game.countPlayers());
+        assertEquals(2, game.countPlayers());
     }
 
     @Test
     public void canGetDealer() {
         assertEquals(dealer, game.getDealer());
     }
-
-
 
 
 }

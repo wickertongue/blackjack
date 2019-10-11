@@ -8,7 +8,7 @@ public class Game {
     public Game(String name) {
         this.name = name;
         this.players = new ArrayList<Player>();
-        this.dealer = dealer;
+        this.dealer = null;
     }
 
     public String getName() {
