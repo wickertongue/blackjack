@@ -32,12 +32,16 @@ public class Runner {
             String showCardsPrompt = String.format("Player %s, please type 'view' to view your cards.",
                     player.getName());
             System.out.println(showCardsPrompt);
+
             if (scanner.next().equals("view")) {
                 for (Card card : player.getHand()) {
                     System.out.println(card.cardName());
                 }
             }
         }
+
+        System.out.println("Blackjack!");
+
 
 //        for (Player player : game.getPlayers()) {
 //            String output = String.format("%s has:", player.getName());

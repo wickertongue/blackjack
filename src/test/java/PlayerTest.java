@@ -34,6 +34,13 @@ public class PlayerTest {
     }
 
     @Test
+    public void canGetPlayerHand() {
+        player1.getHand();
+        assertEquals(2, player1.countHand());
+    }
+
+
+    @Test
     public void canSetPlayerAsDealer() {
         player1.assignDealer();
         assertEquals(true, player1.checkIfDealer());
