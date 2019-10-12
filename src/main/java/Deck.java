@@ -2,42 +2,32 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class Deck {
-    private String name;
-    private ArrayList<Card> cardDeck;
+    private ArrayList<Card> cards;
 
-    public Deck(String name) {
-        this.name = name;
-        this.cardDeck = new ArrayList<Card>();
-    }
+    public Deck() {
+        this.cards = new ArrayList<Card>();
 
-    public String getName() {
-        return this.name;
-    }
-
-    public int countCards() {
-        return this.cardDeck.size();
-    }
-
-    public void addCardToCardDeck(Card card) {
-        this.cardDeck.add(card);
-    }
-
-    public void createCardDeck() {
         for (SuitType suit : SuitType.values()) {
             for (RankType rank : RankType.values()) {
                 Card newCard = new Card(suit, rank);
-                cardDeck.add(newCard);
+                cards.add(newCard);
             }
         }
     }
 
+    public int countCards() {
+        return this.cards.size();
+    }
+
+    public void addCardToCardDeck(Card card) {
+        this.cards.add(card);
+    }
+
     public void shuffleCardDeck() {
-        Collections.shuffle(cardDeck);
+        Collections.shuffle(cards);
     }
 
     public Card dealCard(){
-        Card cardToDeal = this.cardDeck.get(0);
-        this.cardDeck.remove(0);
-        return cardToDeal;
+        return this.cards.remove(0);
     }
 }

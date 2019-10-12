@@ -12,11 +12,10 @@ public class PlayerTest {
     public void before() {
         player1 = new Player("Judy");
         card = new Card(SuitType.HEARTS, RankType.JACK);
-        deck = new Deck("Decklan");
+        deck = new Deck();
 
-        deck.createCardDeck();
-        player1.drawCard(deck);
-        player1.drawCard(deck);
+        player1.takeCard(card);
+        player1.takeCard(card);
     }
 
     @Test
@@ -47,7 +46,7 @@ public class PlayerTest {
 
     @Test
     public void playerCanTwist() {
-        player1.twist(deck);
+        player1.twist(card);
         assertEquals(3, player1.countHand());
     }
 

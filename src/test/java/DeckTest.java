@@ -14,34 +14,22 @@ public class DeckTest {
     public void before() {
         card = new Card(SuitType.HEARTS, RankType.JACK);
         cardDeck = new ArrayList<Card>();
-        deck = new Deck("Decklan");
-    }
-
-    @Test
-    public void canGetDeckName() {
-        assertEquals("Decklan", deck.getName());
-    }
-
-    @Test
-    public void cardsStartsEmpty() {
-        assertEquals(0, deck.countCards());
+        deck = new Deck();
     }
 
     @Test
     public void cardsIncreasesAsCardIsAdded() {
         deck.addCardToCardDeck(card);
-        assertEquals(1, deck.countCards());
+        assertEquals(53, deck.countCards());
     }
 
     @Test
     public void canCreateFullDeckInCards() {
-        deck.createCardDeck();
         assertEquals(52, deck.countCards());
     }
 
     @Test
     public void canGetCardFromDeck() {
-        deck.createCardDeck();
         deck.shuffleCardDeck();
         deck.dealCard();
         assertEquals(51, deck.countCards());
@@ -49,7 +37,6 @@ public class DeckTest {
 
     @Test
     public void dealingMoreThanOneCardFromDeckLowersDeckCount() {
-        deck.createCardDeck();
         deck.shuffleCardDeck();
         deck.dealCard();
         deck.dealCard();

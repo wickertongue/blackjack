@@ -19,8 +19,8 @@ public class Player {
         return this.hand.size();
     }
 
-    public void drawCard(Deck deck) {
-        this.hand.add(deck.dealCard());
+    public void takeCard(Card card) {
+        this.hand.add(card);
     }
 
     public boolean checkIfDealer() {
@@ -39,8 +39,8 @@ public class Player {
         return handTotal;
     }
 
-    public void twist(Deck deck) {
-        drawCard(deck);
+    public void twist(Card card) {
+        takeCard(card);
     }
 
 

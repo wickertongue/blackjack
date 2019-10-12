@@ -20,7 +20,7 @@ public class GameTest {
         game = new Game("Blackjack");
         player1 = new Player("Joe");
         player2 = new Player("Sandy");
-        deck = new Deck("Decklan");
+        deck = new Deck();
         card1 = new Card(SuitType.HEARTS, RankType.JACK);
         card2 = new Card(SuitType.CLUBS, RankType.EIGHT);
         card3 = new Card(SuitType.DIAMONDS, RankType.KING);
@@ -38,11 +38,11 @@ public class GameTest {
         deck.addCardToCardDeck(card4);
         deck.addCardToCardDeck(card5);
 
-        player1.drawCard(deck); // 10
-        player2.drawCard(deck); // 8
-        player1.drawCard(deck); // 10 = 20
-        player2.drawCard(deck); // 5
-        player2.drawCard(deck); // 10 = 25 (bust)
+        player1.takeCard(card1); // 10
+        player2.takeCard(card2); // 8
+        player1.takeCard(card3); // 10 = 20
+        player2.takeCard(card4); // 5
+        player2.takeCard(card5); // 10 = 25 (bust)
     }
 
     @Test
