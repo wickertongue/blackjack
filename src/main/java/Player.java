@@ -38,6 +38,12 @@ public class Player {
         }
         return handTotal;
     }
+
+    public void twist(Deck deck) {
+        drawCard(deck);
+    }
+
+
 }
 
 

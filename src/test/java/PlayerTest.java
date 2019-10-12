@@ -45,5 +45,11 @@ public class PlayerTest {
         assertEquals(false, player1.checkIfDealer());
     }
 
+    @Test
+    public void playerCanTwist() {
+        player1.twist(deck);
+        assertEquals(3, player1.countHand());
+    }
+
 
 }
