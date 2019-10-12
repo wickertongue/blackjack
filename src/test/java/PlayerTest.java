@@ -34,5 +34,16 @@ public class PlayerTest {
         assertNotEquals(0, player1.handTotal());
     }
 
+    @Test
+    public void canSetPlayerAsDealer() {
+        player1.setDealer();
+        assertEquals(true, player1.checkIfDealer());
+    }
+
+    @Test
+    public void playerShouldDefaultToNotDealer(){
+        assertEquals(false, player1.checkIfDealer());
+    }
+
 
 }
