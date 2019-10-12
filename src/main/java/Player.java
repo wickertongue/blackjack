@@ -27,7 +27,7 @@ public class Player {
         return this.dealer;
     }
 
-    public void setDealer() {
+    public void assignDealer() {
         this.dealer = true;
     }
 

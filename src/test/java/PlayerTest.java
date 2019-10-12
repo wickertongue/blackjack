@@ -36,7 +36,7 @@ public class PlayerTest {
 
     @Test
     public void canSetPlayerAsDealer() {
-        player1.setDealer();
+        player1.assignDealer();
         assertEquals(true, player1.checkIfDealer());
     }
 

@@ -9,6 +9,11 @@ public class GameTest {
     private Player player1;
     private Player player2;
     private Deck deck;
+    private Card card1;
+    private Card card2;
+    private Card card3;
+    private Card card4;
+    private Card card5;
 
     @Before
     public void before() {
@@ -16,15 +21,28 @@ public class GameTest {
         player1 = new Player("Joe");
         player2 = new Player("Sandy");
         deck = new Deck("Decklan");
+        card1 = new Card(SuitType.HEARTS, RankType.JACK);
+        card2 = new Card(SuitType.CLUBS, RankType.EIGHT);
+        card3 = new Card(SuitType.DIAMONDS, RankType.KING);
+        card4 = new Card(SuitType.SPADES, RankType.FIVE);
+        card5 = new Card(SuitType.SPADES, RankType.TEN);
 
         game.addPlayer(player1);
         game.addPlayer(player2);
-        player1.setDealer();
-        deck.createCardDeck();
-        player1.drawCard(deck);
-        player1.drawCard(deck);
-        player2.drawCard(deck);
-        player2.drawCard(deck);
+        player1.assignDealer();
+        game.setDealer();
+
+        deck.addCardToCardDeck(card1);
+        deck.addCardToCardDeck(card2);
+        deck.addCardToCardDeck(card3);
+        deck.addCardToCardDeck(card4);
+        deck.addCardToCardDeck(card5);
+
+        player1.drawCard(deck); // 10
+        player2.drawCard(deck); // 8
+        player1.drawCard(deck); // 10 = 20
+        player2.drawCard(deck); // 5
+        player2.drawCard(deck); // 10 = 25 (bust)
     }
 
     @Test
@@ -41,6 +59,11 @@ public class GameTest {
     public void canGetDealer() {
         assertEquals(player1, game.getDealer());
         assertNotEquals(player2, game.getDealer());
+    }
+
+    @Test
+    public void canGetWinner() {
+        assertEquals(player1, game.getWinner());
     }
 
 }
