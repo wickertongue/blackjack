@@ -33,12 +33,6 @@ public class PlayerTest {
         assertNotEquals(0, player1.handTotal());
     }
 
-    @Test
-    public void canGetPlayerHand() {
-        player1.getHand();
-        assertEquals(2, player1.countHand());
-    }
-
 
     @Test
     public void canSetPlayerAsDealer() {
