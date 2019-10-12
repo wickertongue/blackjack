@@ -4,11 +4,13 @@ public class Game {
     private String name;
     private ArrayList<Player> players;
     private Player dealer;
+    private Deck deck;
 
     public Game(String name) {
         this.name = name;
         this.players = new ArrayList<Player>();
         this.dealer = null;
+        this.deck = deck;
     }
 
     public String getName() {
@@ -52,4 +54,13 @@ public class Game {
         return winner;
     }
 
+    public void start(Deck deck) {
+        for (Player player : this.players) {
+            Card card = deck.dealCard();
+            player.takeCard(card);
+            player.takeCard(card);
+        }
+    }
+
 }
+

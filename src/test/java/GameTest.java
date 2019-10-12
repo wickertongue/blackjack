@@ -21,7 +21,6 @@ public class GameTest {
         game = new Game("Blackjack");
         player1 = new Player("Joe");
         player2 = new Player("Sandy");
-        player3 = new Player("Berty");
         deck = new Deck();
         card1 = new Card(SuitType.HEARTS, RankType.JACK);
         card2 = new Card(SuitType.CLUBS, RankType.EIGHT);
@@ -29,22 +28,10 @@ public class GameTest {
         card4 = new Card(SuitType.SPADES, RankType.FIVE);
         card5 = new Card(SuitType.SPADES, RankType.TEN);
 
-        game.addPlayer(player1);
         game.addPlayer(player2);
-        player1.assignDealer();
+        game.addDealer(player1);
+
         game.setDealer();
-
-        deck.addCardToCardDeck(card1);
-        deck.addCardToCardDeck(card2);
-        deck.addCardToCardDeck(card3);
-        deck.addCardToCardDeck(card4);
-        deck.addCardToCardDeck(card5);
-
-        player1.takeCard(card1); // 10
-        player2.takeCard(card2); // 8
-        player1.takeCard(card3); // 10 = 20
-        player2.takeCard(card4); // 5
-        player2.takeCard(card5); // 10 = 25 (bust)
     }
 
     @Test
@@ -59,9 +46,8 @@ public class GameTest {
 
     @Test
     public void canAddDealerToPlayerArray() {
-        game.addDealer(player3);
-        assertEquals(3, game.countPlayers());
-        assertEquals(true, player3.checkIfDealer());
+        assertEquals(2, game.countPlayers());
+        assertEquals(true, player1.checkIfDealer());
     }
 
 
@@ -73,7 +59,25 @@ public class GameTest {
 
     @Test
     public void canGetWinner() {
+        deck.addCardToCardDeck(card1);
+        deck.addCardToCardDeck(card2);
+        deck.addCardToCardDeck(card3);
+        deck.addCardToCardDeck(card4);
+        deck.addCardToCardDeck(card5);
+
+        player1.takeCard(card1); // 10
+        player2.takeCard(card2); // 8
+        player1.takeCard(card3); // 10 = 20
+        player2.takeCard(card4); // 5
+        player2.takeCard(card5); // 10 = 25 (bust)
         assertEquals(player1, game.getWinner());
+    }
+
+    @Test
+    public void canSetUpGameCorrectly() {
+        game.start(deck);
+        assertEquals (2, player1.countHand());
+        assertEquals (2, player2.countHand());
     }
 
 }
