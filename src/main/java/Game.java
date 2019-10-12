@@ -23,6 +23,11 @@ public class Game {
         this.players.add(player);
     }
 
+    public void addDealer(Player player) {
+        player.assignDealer();
+        this.players.add(player);
+    }
+
     public void setDealer() {
         for (Player player : players) {
             if (player.checkIfDealer()) {

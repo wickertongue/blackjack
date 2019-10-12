@@ -8,6 +8,7 @@ public class GameTest {
     private Game game;
     private Player player1;
     private Player player2;
+    private Player player3;
     private Deck deck;
     private Card card1;
     private Card card2;
@@ -20,6 +21,7 @@ public class GameTest {
         game = new Game("Blackjack");
         player1 = new Player("Joe");
         player2 = new Player("Sandy");
+        player3 = new Player("Berty");
         deck = new Deck();
         card1 = new Card(SuitType.HEARTS, RankType.JACK);
         card2 = new Card(SuitType.CLUBS, RankType.EIGHT);
@@ -54,6 +56,14 @@ public class GameTest {
     public void canAddPlayersToPlayerArray() {
         assertEquals(2, game.countPlayers());
     }
+
+    @Test
+    public void canAddDealerToPlayerArray() {
+        game.addDealer(player3);
+        assertEquals(3, game.countPlayers());
+        assertEquals(true, player3.checkIfDealer());
+    }
+
 
     @Test
     public void canGetDealer() {
