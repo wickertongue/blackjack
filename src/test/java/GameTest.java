@@ -18,7 +18,7 @@ public class GameTest {
 
     @Before
     public void before() {
-        game = new Game("Blackjack");
+        game = new Game();
         player1 = new Player("Joe");
         player2 = new Player("Sandy");
         deck = new Deck();
@@ -32,11 +32,6 @@ public class GameTest {
         game.addDealer(player1);
 
         game.setDealer();
-    }
-
-    @Test
-    public void canGetGameName() {
-        assertEquals("Blackjack", game.getName());
     }
 
     @Test

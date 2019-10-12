@@ -1,20 +1,14 @@
 import java.util.ArrayList;
 
 public class Game {
-    private String name;
     private ArrayList<Player> players;
     private Player dealer;
     private Deck deck;
 
-    public Game(String name) {
-        this.name = name;
+    public Game() {
         this.players = new ArrayList<Player>();
         this.dealer = null;
         this.deck = deck;
-    }
-
-    public String getName() {
-        return this.name;
     }
 
     public int countPlayers() {
@@ -23,6 +17,10 @@ public class Game {
 
     public void addPlayer(Player player) {
         this.players.add(player);
+    }
+
+    public ArrayList<Player> getPlayers() {
+        return this.players;
     }
 
     public void addDealer(Player player) {
@@ -55,10 +53,10 @@ public class Game {
     }
 
     public void start(Deck deck) {
+        deck.shuffleCards();
         for (Player player : this.players) {
-            Card card = deck.dealCard();
-            player.takeCard(card);
-            player.takeCard(card);
+            player.takeCard(deck.dealCard());
+            player.takeCard(deck.dealCard());
         }
     }
 

@@ -23,8 +23,8 @@ public class Deck {
         this.cards.add(card);
     }
 
-    public void shuffleCardDeck() {
-        Collections.shuffle(cards);
+    public void shuffleCards() {
+        Collections.shuffle(this.cards);
     }
 
     public Card dealCard(){

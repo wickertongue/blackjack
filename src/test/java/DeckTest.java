@@ -30,14 +30,14 @@ public class DeckTest {
 
     @Test
     public void canGetCardFromDeck() {
-        deck.shuffleCardDeck();
+        deck.shuffleCards();
         deck.dealCard();
         assertEquals(51, deck.countCards());
     }
 
     @Test
-    public void dealingMoreThanOneCardFromDeckLowersDeckCount() {
-        deck.shuffleCardDeck();
+    public void shuffleCards() {
+        deck.shuffleCards();
         deck.dealCard();
         deck.dealCard();
         deck.dealCard();
