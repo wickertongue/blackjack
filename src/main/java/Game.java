@@ -3,12 +3,10 @@ import java.util.ArrayList;
 public class Game {
     private String name;
     private ArrayList<Player> players;
-    private Dealer dealer;
 
     public Game(String name) {
         this.name = name;
         this.players = new ArrayList<Player>();
-        this.dealer = null;
     }
 
     public String getName() {
@@ -23,12 +21,22 @@ public class Game {
         this.players.add(player);
     }
 
-    public void addDealer(Dealer dealer) {
-        this.dealer = dealer;
+    public void setDealer() {
+        for (Player player : players) {
+            if (player.checkIfDealer()) {
+                dealer = player;
+            }
+        }
     }
 
-    public Dealer getDealer() {
-        return this.dealer;
+    public Player getDealer() {
+        Player dealer = null;
+        for (Player player : players) {
+            if (player.checkIfDealer()) {
+                dealer = player;
+            }
+        }
+        return dealer;
     }
 
 }
