@@ -9,36 +9,13 @@ public class Runner {
         Game game = new Game();
         Player dealer = new Player("Dean the Dealer");
 
-        game.addPlayer(dealer);
         dealer.assignDealer();
         game.setDealer();
 
-        System.out.println("Blackjack!");
-        System.out.println("How many players will be playing today?");
-
-        int players = parseInt(scanner.next());
-
-        for (int i = 0; i < players; i++) {
-            String prompt = String.format("Player %s, enter your name: ", (i + 1));
-            System.out.println(prompt);
-            String playerName = scanner.next();
-            Player player = new Player(playerName);
-            game.addPlayer(player);
-        }
-
+        game.setUp();
         game.start(deck);
+        game.twistOrStickLoop(deck);
 
-        for (Player player : game.getPlayers()) {
-            String showCardsPrompt = String.format("Player %s, please type 'view' to view your cards.",
-                    player.getName());
-            System.out.println(showCardsPrompt);
-
-            if (scanner.next().equals("view")) {
-                for (Card card : player.getHand()) {
-                    System.out.println(card.cardName());
-                }
-            }
-        }
 
         System.out.println("Blackjack!");
 
@@ -53,6 +30,4 @@ public class Runner {
 //            System.out.println(String.format("Hand total: %s", player.handTotal()));
 //        }
     }
-
-
 }

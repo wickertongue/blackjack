@@ -1,6 +1,11 @@
 import java.util.ArrayList;
+import java.util.Scanner;
+
+
+import static java.lang.Integer.parseInt;
 
 public class Game {
+    Scanner scanner = new Scanner(System.in);
     private ArrayList<Player> players;
     private Player dealer;
     private Deck deck;
@@ -55,8 +60,53 @@ public class Game {
     public void start(Deck deck) {
         deck.shuffleCards();
         for (Player player : this.players) {
-            player.takeCard(deck.dealCard());
-            player.takeCard(deck.dealCard());
+            Card card1 = deck.dealCard();
+            Card card2 = deck.dealCard();
+            player.takeCard(card1);
+            player.takeCard(card2);
+        }
+    }
+
+    public void setUp() {
+        System.out.println("Blackjack!");
+        System.out.println("How many players will be playing today?");
+
+        int playerCount = parseInt(scanner.next());
+
+        for (int i = 0; i < playerCount; i++) {
+            String prompt = String.format("Player %s, enter your name: ", (i + 1));
+            System.out.println(prompt);
+            String playerName = scanner.next();
+            Player player = new Player(playerName);
+            addPlayer(player);
+        }
+    }
+
+    public void twistOrStickLoop(Deck deck) {
+        for (Player player : getPlayers()) {
+            String showCardsPrompt = String.format("%s, please type 'view' to view your cards.",
+                    player.getName());
+            System.out.println(showCardsPrompt);
+
+            if (scanner.next().equals("view")) {
+                for (Card card : player.getHand()) {
+                    System.out.println(card.cardName());
+                }
+            }
+
+            String twistOrStickPrompt = String.format("%s, to twist, type 'twist'. To stick, type 'stick'.",
+                    player.getName());
+            System.out.println(twistOrStickPrompt);
+
+            if (scanner.next().equals("twist")) {
+                Card newCard = deck.dealCard();
+                player.takeCard(newCard);
+                for (Card card : player.getHand()) {
+                    System.out.println(card.cardName());
+                }
+            } else if (scanner.next().equals("twist")) {
+
+            }
         }
     }
 
