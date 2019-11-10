@@ -22,4 +22,8 @@ public class Card {
     public String cardName(){
         return String.format("%s of %s", this.rank, this.suit);
     }
+
+    public String prettyPrintCardWithValue() {
+        return String.format("%s of %s (value: %s)", this.rank, this.suit, this.getValue());
+    }
 }

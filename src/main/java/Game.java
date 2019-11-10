@@ -82,7 +82,7 @@ public class Game {
         }
     }
 
-    public void twistOrStickLoop(Deck deck) {
+    public void viewCardsPrompt(Deck deck) {
         for (Player player : getPlayers()) {
             String showCardsPrompt = String.format("%s, please type 'view' to view your cards.",
                     player.getName());
@@ -90,25 +90,40 @@ public class Game {
 
             if (scanner.next().equals("view")) {
                 for (Card card : player.getHand()) {
-                    System.out.println(card.cardName());
+                    System.out.println(card.prettyPrintCardWithValue());
                 }
             }
 
-            String twistOrStickPrompt = String.format("%s, to twist, type 'twist'. To stick, type 'stick'.",
-                    player.getName());
-            System.out.println(twistOrStickPrompt);
+            System.out.println("Hand value: " + player.handTotal());
 
-            if (scanner.next().equals("twist")) {
-                Card newCard = deck.dealCard();
-                player.takeCard(newCard);
-                for (Card card : player.getHand()) {
-                    System.out.println(card.cardName());
-                }
-            } else if (scanner.next().equals("twist")) {
-
-            }
+            twistOrStickPrompt(deck, player);
         }
     }
 
-}
+    public void twistOrStickPrompt(Deck deck, Player player) {
 
+        String prompt = String.format("%s, to twist, type 'twist'. To stick, type 'stick'.",
+                player.getName());
+        System.out.println(prompt);
+
+        String userinput = scanner.next();
+
+        if (userinput.equals("twist")) {
+            Card newCard = deck.dealCard();
+            player.takeCard(newCard);
+            for (Card card : player.getHand()) {
+                System.out.println(card.cardName());
+            }
+            System.out.println("Hand value: " + player.handTotal());
+            twistOrStickPrompt(deck, player);
+        } else if (userinput.equals("stick")) {
+            String response = String.format("%s, you have selected 'stick'. Now on to the next player.",
+                    player.getName());
+            System.out.println(response);
+        } else {
+            System.out.println("Your request was not processed correctly");
+            twistOrStickPrompt(deck, player);
+        }
+
+    }
+}

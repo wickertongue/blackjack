@@ -14,7 +14,7 @@ public class Runner {
 
         game.setUp();
         game.start(deck);
-        game.twistOrStickLoop(deck);
+        game.viewCardsPrompt(deck);
 
 
         System.out.println("Blackjack!");
